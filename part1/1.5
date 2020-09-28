@@ -1,0 +1,6 @@
+podman run -d --rm -it --name looper-it localhost/ubuntu:xenial sh -c '"Input websitebsite:"; read website; echo "Searching.."; sleep 1; curl http://$website'
+podman exec -it looper-it bash
+
+inside container:
+apt-get update
+apt-get install curl
