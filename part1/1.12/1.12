@@ -1,0 +1,6 @@
+For backend:
+podman run -it --rm -v $(pwd)/logs.txt:/app/logs.txt -p 8000:8000 localhost/backend-example
+
+For frontend:
+podman run -it --rm -p 5000:5000 localhost/frontend-example
+
