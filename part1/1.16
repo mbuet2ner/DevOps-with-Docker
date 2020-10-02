@@ -1,0 +1,4 @@
+Unfortunately, podman does not work with heroku.
+Therefore, I could not use 'heroku container:login' to finally push the image.
+
+But I did create the app on heroku (helsinki-heroku-example).
