@@ -1,0 +1,12 @@
+version: '3.5'  
+
+services: 
+    ports_exercise: 
+      image: localhost/backend-example 
+      build: . 
+      # :Z is needed for podman-compose to work with SELinux see https://github.com/containers/podman-compose/issues/41
+      volumes: 
+        - ./logs.txt:/app/logs.txt:Z
+      ports: 
+        - 8000:8000 
+
