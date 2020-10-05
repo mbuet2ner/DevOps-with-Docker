@@ -1,0 +1,22 @@
+version: '3.5'  
+
+services: 
+    backend_example: 
+      image: localhost/backend-example 
+      build: . 
+      # :Z is needed for podman-compose to work with SELinux see https://github.com/containers/podman-compose/issues/41
+      volumes: 
+        - ./logs.txt:/app/logs.txt:Z
+      environment:
+      - REDIS=redis
+      ports: 
+        - 8000:8000
+    redis:
+      image: redis
+    frontend_example: 
+      image: localhost/frontend-example
+      build: ../frontend-example-docker
+      ports: 
+        - 5000:5000 
+
+ 
