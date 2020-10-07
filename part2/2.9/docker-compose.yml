@@ -1,0 +1,36 @@
+version: '3.5' 
+
+services: 
+    backend: 
+      image: localhost/backend-example 
+      build: . 
+      # :Z is needed for podman-compose to work with SELinux see https://github.com/containers/podman-compose/issues/41
+      volumes: 
+        - ./logs.txt:/app/logs.txt:Z
+      environment:
+        - REDIS=redis
+        - DB_USERNAME=postgres
+        - DB_PASSWORD=example
+        - DB_HOST=db
+      depends_on:
+        - db
+    redis:
+      image: redis
+    frontend: 
+      image: localhost/frontend-example
+      build: ../frontend-example-docker
+    db:
+      image: postgres
+      restart: unless-stopped
+      environment:
+        POSTGRES_PASSWORD: example
+        PGDATA: /database
+      container_name: db_backend
+      volumes:
+        - ../postgres_db:/database:Z
+    reverse_proxy:
+      image: nginx
+      volumes:
+        - ../nginx/nginx.conf:/etc/nginx/nginx.conf:Z
+      ports: 
+        - 80:80

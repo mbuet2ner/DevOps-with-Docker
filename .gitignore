@@ -2,6 +2,8 @@ part1/frontend-example-docker
 part1/backend-example-docker
 part1/spring-example-project
 part1/rails-example-project
+part1/nginx
+part1/postgres_db
 part2/whoami/*.mp4
 part2/scaling-exercise
 part2/redmine
