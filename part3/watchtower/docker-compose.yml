@@ -1,0 +1,16 @@
+version: "3"
+services:
+  coursematerial:
+    image: jakousa/docker-hy
+    ports:
+      - 4000:80
+    container_name: coursematerial
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
+  watchtower:
+    environment:
+      WATCHTOWER_LABEL_ENABLE: "true"
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    container_name: watchtower
