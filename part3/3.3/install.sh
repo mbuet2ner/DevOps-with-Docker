@@ -1,7 +1,6 @@
 git clone https://github.com/mbuet2ner/spring-example-project
-ls
 cd spring-example-project
-#docker build -t example .
+docker build -t example .
 cat /app/credential.txt | docker login --username mbuet2ner --password-stdin
 docker-compose build
 docker-compose push
